@@ -27,7 +27,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       aria-label="Presentación principal"
-      className="relative min-h-[65vh] md:min-h-screen flex flex-col items-center justify-center px-5 pt-28 md:pt-32 pb-12 overflow-hidden bg-[#1A1A1A]"
+      className="relative min-h-[45vh] md:min-h-screen flex flex-col items-center justify-center px-5 pt-28 md:pt-32 pb-12 overflow-hidden bg-[#1A1A1A]"
     >
       {/* Background photo with parallax */}
       <motion.img
