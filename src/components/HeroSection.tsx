@@ -2,6 +2,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion
 import { useRef } from 'react'
 import { Phone, Star, Clock, MapPin } from 'lucide-react'
 import heroImg from '../assets/images/principal.jpg'
+import heroImgMobile from '../assets/images/principal-movil.jpg'
 
 const PHONE = '663 240 075'
 const PHONE_HREF = 'tel:663240075'
@@ -30,6 +31,7 @@ export default function HeroSection() {
       className="relative min-h-[45vh] md:min-h-screen flex flex-col items-center justify-center px-5 pt-28 md:pt-32 pb-12 overflow-hidden bg-[#1A1A1A]"
     >
       {/* Background photo with parallax */}
+      {/* Desktop image */}
       <motion.img
         src={heroImg}
         alt=""
@@ -37,7 +39,16 @@ export default function HeroSection() {
         // @ts-expect-error fetchpriority valid HTML
         fetchpriority="high"
         style={{ y: imgY }}
-        className="absolute inset-0 w-full h-full md:h-[115%] top-0 md:top-[-8%] object-cover object-[center_20%] md:object-center select-none pointer-events-none"
+        className="hidden md:block absolute inset-0 w-full h-[115%] top-[-8%] object-cover object-center select-none pointer-events-none"
+      />
+      {/* Mobile image */}
+      <img
+        src={heroImgMobile}
+        alt=""
+        aria-hidden="true"
+        // @ts-expect-error fetchpriority valid HTML
+        fetchpriority="high"
+        className="md:hidden absolute inset-0 w-full h-full top-0 object-cover object-center select-none pointer-events-none"
       />
 
       {/* Dark overlay */}
