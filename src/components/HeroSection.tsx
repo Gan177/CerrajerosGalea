@@ -124,7 +124,7 @@ export default function HeroSection() {
           className="text-base sm:text-xl text-white/65 max-w-lg mx-auto mb-7 leading-relaxed font-light"
         >
           Atención inmediata en menos de 30 minutos.
-          <br className="hidden sm:block" />
+          <br />
           Expertos en puertas, vehículos y alta seguridad.
         </motion.p>
 
