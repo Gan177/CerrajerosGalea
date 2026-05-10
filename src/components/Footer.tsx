@@ -17,9 +17,9 @@ export default function Footer() {
             <img
               src={logo}
               alt="Cerrajeros Galea"
-              width={140}
-              height={48}
-              className="h-10 w-auto object-contain"
+              width={200}
+              height={68}
+              className="h-16 w-auto object-contain"
             />
             <p className="text-[oklch(55%_0.005_20)] text-sm leading-relaxed">
               Servicio de cerrajería profesional 24h en Bizkaia. Aperturas sin
