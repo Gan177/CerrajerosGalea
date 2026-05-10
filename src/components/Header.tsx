@@ -29,6 +29,10 @@ export default function Header() {
 
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 40))
 
+  function scrollTo(id: string) {
+    setActive(id)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
 
   return (
     <motion.header
@@ -38,20 +42,17 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 md:h-24 grid grid-cols-3 items-center">
+      {/* Main bar */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 md:h-24 grid grid-cols-3 items-center">
 
-        {/* Left — desktop nav / mobile CTA */}
+        {/* Left — desktop nav / mobile call CTA */}
         <div className="flex items-center">
           <nav className="hidden md:flex items-center gap-6" aria-label="Secciones">
             {NAV.map(({ href, id, label }) => (
               <motion.a
                 key={id}
                 href={href}
-                onClick={e => {
-                  e.preventDefault()
-                  setActive(id)
-                  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-                }}
+                onClick={e => { e.preventDefault(); scrollTo(id) }}
                 whileTap={reduced ? undefined : { scale: 0.95 }}
                 transition={{ duration: 0.1, ease: EASE }}
                 className="flex flex-col items-center gap-1.5 py-1"
@@ -63,7 +64,6 @@ export default function Header() {
                 }`}>
                   {label}
                 </span>
-                {/* Always rendered — no layout shift */}
                 <motion.span
                   className="block h-0.75 rounded-full bg-[#C1272D]"
                   animate={{ width: active === id ? 16 : 0, opacity: active === id ? 1 : 0 }}
@@ -73,16 +73,16 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Mobile CTA */}
+          {/* Mobile: compact Llamar pill */}
           <motion.a
             href={PHONE_HREF}
             aria-label={`Llamar a Cerrajeros Galea: ${PHONE}`}
             whileTap={reduced ? undefined : { scale: 0.96 }}
             transition={{ duration: 0.12, ease: EASE }}
-            className="md:hidden flex items-center gap-2 bg-[#C1272D] text-[#FFD700] px-4 py-2.5 rounded-full font-bold text-sm pulse-cta"
+            className="md:hidden flex items-center gap-1.5 bg-[#C1272D] text-white px-3 py-2 rounded-full font-bold text-xs pulse-cta"
           >
-            <Phone size={16} />
-            {PHONE}
+            <Phone size={13} />
+            Llamar
           </motion.a>
         </div>
 
@@ -100,13 +100,13 @@ export default function Header() {
               alt="Cerrajeros Galea"
               width={240}
               height={80}
-              className="h-9 md:h-16 w-auto object-contain bg-transparent"
+              className="h-8 md:h-16 w-auto object-contain bg-transparent"
               style={{ filter: 'drop-shadow(0 2px 16px rgba(0,0,0,0.8))' }}
             />
           </motion.a>
         </div>
 
-        {/* Right — WhatsApp + phone CTA */}
+        {/* Right — WhatsApp + desktop phone CTA */}
         <div className="flex justify-end items-center gap-2">
           <motion.a
             href={`https://wa.me/34663240075?text=Hola%2C%20necesito%20un%20cerrajero`}
@@ -115,7 +115,7 @@ export default function Header() {
             aria-label="Contactar por WhatsApp"
             whileTap={reduced ? undefined : { scale: 0.96 }}
             transition={{ duration: 0.12, ease: EASE }}
-            className="flex items-center justify-center w-9 h-9 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] transition-colors duration-150"
+            className="flex items-center justify-center w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] transition-colors duration-150"
             style={{ transition: 'background-color 160ms ease-out' }}
           >
             <WhatsAppIcon />
@@ -132,10 +132,34 @@ export default function Header() {
             onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#C1272D')}
           >
             <Phone size={14} />
-            {PHONE}
+            Llamar
           </motion.a>
         </div>
 
+      </div>
+
+      {/* Mobile nav row */}
+      <div className="md:hidden border-t border-white/[0.07]">
+        <nav
+          aria-label="Secciones"
+          className="flex items-center justify-center gap-0 h-9"
+        >
+          {NAV.map(({ href, id, label }, i) => (
+            <a
+              key={id}
+              href={href}
+              onClick={e => { e.preventDefault(); scrollTo(id) }}
+              className={`relative flex-1 flex items-center justify-center text-[11px] font-medium tracking-wide h-full transition-colors duration-150 ${
+                active === id ? 'text-white' : 'text-white/45'
+              } ${i < NAV.length - 1 ? 'border-r border-white/[0.07]' : ''}`}
+            >
+              {active === id && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] rounded-full bg-[#C1272D]" />
+              )}
+              {label}
+            </a>
+          ))}
+        </nav>
       </div>
     </motion.header>
   )

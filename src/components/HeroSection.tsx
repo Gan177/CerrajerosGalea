@@ -27,7 +27,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       aria-label="Presentación principal"
-      className="relative min-h-screen flex flex-col items-center justify-center px-5 pt-20 md:pt-32 pb-12 overflow-hidden bg-[#1A1A1A]"
+      className="relative min-h-screen flex flex-col items-center justify-center px-5 pt-28 md:pt-32 pb-12 overflow-hidden bg-[#1A1A1A]"
     >
       {/* Background photo with parallax */}
       <motion.img
@@ -37,7 +37,7 @@ export default function HeroSection() {
         // @ts-expect-error fetchpriority valid HTML
         fetchpriority="high"
         style={{ y: imgY }}
-        className="absolute inset-0 w-full h-[115%] top-[-8%] object-cover object-center select-none pointer-events-none"
+        className="absolute inset-0 w-full h-full md:h-[115%] top-0 md:top-[-8%] object-cover object-[center_20%] md:object-center select-none pointer-events-none"
       />
 
       {/* Dark overlay */}
