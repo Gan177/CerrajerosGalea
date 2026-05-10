@@ -15,7 +15,7 @@ export default function ServiceZonesSection() {
     <section
       id="zonas"
       aria-labelledby="zonas-title"
-      className="relative py-20 pb-32 px-4 bg-[#1A1A1A] overflow-hidden"
+      className="relative py-20 pb-12 px-4 bg-[#1A1A1A] overflow-hidden"
     >
       {/* Bottom bleed into footer */}
       <div
@@ -37,9 +37,9 @@ export default function ServiceZonesSection() {
           </p>
           <h2
             id="zonas-title"
-            className="text-3xl sm:text-4xl font-bold text-white tracking-tight flex items-center justify-center gap-3"
+            className="text-3xl sm:text-4xl font-bold text-white tracking-tight flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3"
           >
-            <MapPin className="text-[#C1272D]" size={32} aria-hidden="true" />
+            <MapPin className="text-[#C1272D]" size={28} aria-hidden="true" />
             Zonas de Servicio en Bizkaia
           </h2>
           <p className="mt-3 text-[oklch(60%_0.006_20)] text-sm max-w-sm mx-auto">
