@@ -149,7 +149,7 @@ export default function Header() {
               className={`relative flex-1 flex items-center justify-center py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 ${
                 active === id
                   ? 'bg-[#C1272D]/15 text-white ring-1 ring-[#C1272D]/40'
-                  : 'text-white/40 hover:text-white/70'
+                  : 'text-white/75 hover:text-white'
               }`}
             >
               {label}
