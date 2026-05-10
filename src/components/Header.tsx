@@ -100,7 +100,7 @@ export default function Header() {
               alt="Cerrajeros Galea"
               width={240}
               height={80}
-              className="h-8 md:h-16 w-auto object-contain bg-transparent"
+              className="h-11 md:h-16 w-auto object-contain bg-transparent"
               style={{ filter: 'drop-shadow(0 2px 16px rgba(0,0,0,0.8))' }}
             />
           </motion.a>
@@ -139,23 +139,19 @@ export default function Header() {
       </div>
 
       {/* Mobile nav row */}
-      <div className="md:hidden border-t border-white/[0.07]">
-        <nav
-          aria-label="Secciones"
-          className="flex items-center justify-center gap-0 h-9"
-        >
-          {NAV.map(({ href, id, label }, i) => (
+      <div className="md:hidden border-t border-white/[0.07] px-3 py-2">
+        <nav aria-label="Secciones" className="flex items-center justify-center gap-1.5">
+          {NAV.map(({ href, id, label }) => (
             <a
               key={id}
               href={href}
               onClick={e => { e.preventDefault(); scrollTo(id) }}
-              className={`relative flex-1 flex items-center justify-center text-[11px] font-medium tracking-wide h-full transition-colors duration-150 ${
-                active === id ? 'text-white' : 'text-white/45'
-              } ${i < NAV.length - 1 ? 'border-r border-white/[0.07]' : ''}`}
+              className={`relative flex-1 flex items-center justify-center py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 ${
+                active === id
+                  ? 'bg-[#C1272D]/15 text-white ring-1 ring-[#C1272D]/40'
+                  : 'text-white/40 hover:text-white/70'
+              }`}
             >
-              {active === id && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] rounded-full bg-[#C1272D]" />
-              )}
               {label}
             </a>
           ))}
